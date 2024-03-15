@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACK SWAN BTS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/WBcSJPd/New-Project-A1-A7313.png">
+    <link rel="stylesheet" href="songs.css">
+</head>
+<body>
+    <div class="header-wrapper">
+        <a style="position: fixed;">WORLD OF BTS</a><br>
+        <div class="menubar">
+            <a href="lockscreen.html"><i class="fa-solid fa-house"></i>HOME</a><br>
+            <a style="color: white;"><i class="fa-solid fa-music" style="color: white;"></i>SONGS</a><br>
+            <div class="start">
+                <img src="https://static.vecteezy.com/system/resources/previews/027/127/549/non_2x/bts-logo-bts-icon-transparent-free-png.png" alt="" width="40%">
+            </div>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="https://i.pinimg.com/736x/0d/46/56/0d465622b3a1c766ef59d870344dbb9c.jpg" alt="" width="54%">
+    </div>
+    <div class="audiosplayer">
+        <ul id="song-list" style="z-index: -20;">
+            <li data-src="list\test2.mp3">MASHUP<i class="fa-solid fa-play play-button"></i></li>
+        </ul>
+        <button id="play-pause-btn" style="    position: fixed;left: 5%;z-index: 10000;top: -3%;">Play</button>
+        <div class="skip">
+            <button id="back-btn" style="position: fixed;left: 1%;color: black;z-index: 20;font-size: 15px;">&#9668;&#9668;</button>
+            <button id="forward-btn" style="position: fixed;left: 10%;color: black;z-index: 20;font-size: 15px;">&#9658;&#9658;</button>
+        </div>
+        <span id="duration"></span>
+        <div id="skip-message"></div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var audioPlayer = new Audio();
+                    var playPauseButton = document.getElementById("play-pause-btn");
+                    var backButton = document.getElementById("back-btn");
+                    var forwardButton = document.getElementById("forward-btn");
+                    var songList = document.getElementById("song-list");
+                    var currentSongIndex = 0;
+                    var durationDisplay = document.getElementById("duration");
+                    var skipMessage = document.getElementById("skip-message");
+
+                    function playNextSong() {
+                        currentSongIndex = (currentSongIndex + 1) % songList.children.length;
+                        var nextSong = songList.children[currentSongIndex];
+                        var songSrc = nextSong.getAttribute("data-src");
+                        if (songSrc) {
+                            audioPlayer.src = songSrc;
+                            audioPlayer.play();
+                            playPauseButton.textContent = "Pause";
+                        }
+                    }
+
+                    function displaySkipMessage(message) {
+                        skipMessage.textContent = message;
+                        skipMessage.style.display = "block";
+                        setTimeout(function() {
+                            skipMessage.style.display = "none";
+                        }, 2000000); // Hide message after 2 seconds
+                    }
+
+                    playPauseButton.addEventListener("click", function() {
+                        if (audioPlayer.paused) {
+                            audioPlayer.play();
+                            playPauseButton.textContent = "Pause";
+                        } else {
+                            audioPlayer.pause();
+                            playPauseButton.textContent = "Play";
+                        }
+                    });
+
+                    backButton.addEventListener("click", function() {
+                        audioPlayer.currentTime -= 5; // Go back 10 seconds
+                        displaySkipMessage("Skipped back 5 seconds");
+                    });
+
+                    forwardButton.addEventListener("click", function() {
+                        audioPlayer.currentTime += 5; // Go forward 10 seconds
+                        displaySkipMessage("Skipped forward 5 seconds");
+                    });
+
+                    songList.addEventListener("click", function(event) {
+                        var target = event.target;
+                        if (target.classList.contains("play-button")) {
+                            var listItem = target.parentNode;
+                            currentSongIndex = Array.from(songList.children).indexOf(listItem);
+                            var songSrc = listItem.getAttribute("data-src");
+                            if (songSrc) {
+                                audioPlayer.src = songSrc;
+                                audioPlayer.play();
+                                playPauseButton.textContent = "Pause";
+                            }
+                        }
+                    });
+
+                    audioPlayer.addEventListener("ended", function() {
+                        playNextSong();
+                    });
+
+                    audioPlayer.addEventListener("loadedmetadata", function() {
+                        var minutes = Math.floor(audioPlayer.duration / 60);
+                        var seconds = Math.floor(audioPlayer.duration % 60);
+                        durationDisplay.textContent = "Duration: " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+                    });
+                });
+            </script>
+        </div>
+        <div class="extra">
+            <a href="">Donate</a>
+            <a href="us.html">Demand us</a>
+            <p style="color: rgba(255, 255, 255, 0.443);">Contact us : blackswan19ot7@gmail.com</p>
+            <!-- <span style="color: rgba(255, 0, 0, 0.594);">-> New song arrived</span> -->
+        </div>
+</body>
+</html>

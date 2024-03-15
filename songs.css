@@ -1,0 +1,173 @@
+*{
+    list-style: none;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+body{
+    /* background-image: url("https://qph.cf2.quoracdn.net/main-qimg-52e39ba704a084fd6fe19ac53ff4607e"); */
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* backdrop-filter: saturate(180%) blur(20px);  */
+    background-color: rgb(0, 0, 0);
+    background-position-y: -51%;
+    background-position-x: 52%;
+    font-family: system-ui;
+}
+.header-wrapper {
+    max-width: fit-content;
+    position: relative;
+    z-index: 10;
+}
+.menubar {
+    float: left;
+    padding: 63px;
+    width: 13%;
+    left: -1%;
+    top: 0%;
+    height: 85%;
+    z-index: -1;
+    position: fixed;
+    background: #000000;
+    font-weight: 700;
+    border: solid 2px purple;
+}
+
+.menubar a {
+    line-height: 72px;
+    color: gray;
+}
+.start{
+    font-weight: 500;
+    transition: 1s;
+}
+.start img{
+    position: absolute;
+    border-radius: 72%;
+    width: 56%;
+    left: 17%;
+    top: 33%;
+    border: solid 1.5px rgb(255, 255, 255);
+    animation: spin 15s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.menubar i{
+    position: relative;
+    top: -2px;
+    left: -7px;
+    color: gray;
+}
+.extra{
+    position: fixed;
+    left: 3%;
+    z-index: 1001;
+    top: 81%;
+    width: 20%;
+}
+.extra a{
+    color: rgba(255, 255, 255, 0.742);
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.extra a:hover{
+    color: white;
+    text-decoration: overline;
+}
+.logo{
+    width: 59%;
+    position: fixed;
+    background: black;
+    padding-left: 46%;
+    top: -4%;
+    z-index: -10;
+    box-shadow: 0 2px 0 0 purple;
+      
+}
+.logo .audiosplayer{
+    position: fixed;
+    top: 22%;
+    left: 86%;
+
+}
+button{
+    background: rgb(255, 255, 255);
+    COLOR: rgb(0, 0, 0);
+    padding: 13px 3%;
+    border-radius: 37px;
+    margin-top: 36%;
+    left: 89%;
+    position: fixed;
+    cursor: pointer;
+    border: none;
+} 
+
+button:hover{
+    background: purple;
+    color: rgb(255, 255, 255);
+}
+#skip-message {
+    display: none;
+    position: absolute;
+    top: 76%;
+    left: 9.5%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: purple;
+    color: rgb(255, 255, 255);
+    border-radius: 30px;
+    z-index: 1000;
+    font-weight: 900;
+}
+ul{
+    position: absolute;
+    left: 24%;
+    top: 32%;
+    width: 68%;
+    background-color: rgba(23, 23, 23, 0.79);
+    padding: 34px 35px;
+    border-radius: 19px;
+}
+li{
+    color: rgb(255, 255, 255);
+    margin: -15px;
+    line-height: 84px;
+    padding: 3px 41px;
+}
+li i{
+    color: rgb(255, 255, 255);
+    position: relative;
+    left: 871px;
+    cursor: pointer;
+}
+li:hover{
+    background: purple;
+    margin: -15px;
+    padding: 3px 41px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+}
+li i:hover{
+    color: rgb(0, 0, 0);
+}
+@media only screen and (max-width: 1420px) {
+    body {
+        background-color: #000000;
+        display: none;
+    }
+    .message {
+        background-color: #000000;
+    }
+}
